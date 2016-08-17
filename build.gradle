@@ -1,0 +1,41 @@
+buildscript {
+    ext {
+        springBootVersion = '1.3.6.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+plugins {
+    id 'java'
+    id 'eclipse'
+    id "io.spring.dependency-management" version "0.6.0.RELEASE"
+}
+
+allprojects {
+
+    apply plugin: "spring-boot"
+
+    sourceCompatibility = 1.8
+    targetCompatibility = 1.8
+    version = '1.0'
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+         imports {
+              mavenBom 'org.springframework.cloud:spring-cloud-netflix:1.1.2.RELEASE'
+         }
+    }
+
+    // Allow to pass different server ports via "gradle bootRun -Dserver.port=8082" etc.
+    bootRun {
+        systemProperties System.properties
+    }
+}

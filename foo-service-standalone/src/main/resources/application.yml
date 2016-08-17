@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: foo-service
+
+server:
+  port: 8080
+
+ribbon:
+  eureka:
+    enabled: false
+ 
+bar-service:
+  ribbon:
+    listOfServers: localhost:8081,localhost:8082,localhost:8083

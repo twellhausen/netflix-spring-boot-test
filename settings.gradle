@@ -1,0 +1,1 @@
+include "bar-service-standalone", "foo-service-standalone", "eureka-server", "bar-service-eureka", "foo-service-eureka", "test-client"
